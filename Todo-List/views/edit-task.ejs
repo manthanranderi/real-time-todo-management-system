@@ -1,0 +1,40 @@
+<%- include("partials/header") %>
+
+<div class="form-container">
+    <div class="card form-box">
+
+        <% if(task){ %>
+
+            <h1 class="page-title">Edit Task</h1>
+
+            <form method="POST" action="/update">
+
+                <input type="hidden" name="id" value="<%= task.id %>">
+
+                <input type="text" name="title" value="<%= task.title %>" required>
+
+                <textarea name="description"><%= task.description %></textarea>
+
+                <select name="priority">
+                    <option <%= task.priority === "Low" ? "selected" : "" %>>Low</option>
+                    <option <%= task.priority === "Medium" ? "selected" : "" %>>Medium</option>
+                    <option <%= task.priority === "High" ? "selected" : "" %>>High</option>
+                </select>
+
+                <select name="status">
+                    <option <%= task.status === "Pending" ? "selected" : "" %>>Pending</option>
+                    <option <%= task.status === "In Progress" ? "selected" : "" %>>In Progress</option>
+                    <option <%= task.status === "Completed" ? "selected" : "" %>>Completed</option>
+                </select>
+
+                <button class="btn">Update Task</button>
+            </form>
+
+            <a href="/" class="home-link">← Back to Dashboard</a>
+
+        <% } %>
+
+    </div>
+</div>
+
+<%- include("partials/footer") %>

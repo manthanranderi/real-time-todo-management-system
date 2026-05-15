@@ -1,0 +1,57 @@
+<%- include("partials/header") %>
+
+<h1 class="page-title">Task Dashboard</h1>
+
+<div class="card">
+    <% if(tasks.length > 0){ %>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Task Title</th>
+                <th>Description</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% tasks.forEach(task => { %>
+                <tr>
+                    <td><%= task.id %></td>
+                    <td><%= task.title %></td>
+                    <td><%= task.description %></td>
+                    <td><%= task.priority %></td>
+
+                    <td>
+                        <% if(task.status === "Pending"){ %>
+                            <span class="badge pending">Pending</span>
+                        <% } else if(task.status === "In Progress"){ %>
+                            <span class="badge progress">In Progress</span>
+                        <% } else { %>
+                            <span class="badge completed">Completed</span>
+                        <% } %>
+                    </td>
+
+                    <td>
+                        <div class="actions">
+                            <a href="/edit/<%= task.id %>" class="action-btn edit-btn">Edit</a>
+
+                            <a href="/delete/<%= task.id %>" class="action-btn delete-btn">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <% } else { %>
+        <div class="empty-state">
+            No tasks available. Start by adding a new task.
+        </div>
+    <% } %>
+</div>
+
+<%- include("partials/footer") %>

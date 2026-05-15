@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional Todo App</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    min-height:100vh;
+    background: linear-gradient(135deg, #0f172a, #1d4ed8, #38bdf8);
+    color:#ffffff;
+}
+
+.navbar{
+    width:100%;
+    padding:18px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(10px);
+    box-shadow:0 4px 20px rgba(0,0,0,0.2);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+.nav-links{
+    display:flex;
+    gap:15px;
+}
+
+.nav-links a,
+.btn,
+.action-btn{
+    text-decoration:none;
+    border:none;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+.nav-links a{
+    color:white;
+    padding:10px 18px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.08);
+}
+
+.nav-links a:hover{
+    background:#2563eb;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+}
+
+.page-title{
+    text-align:center;
+    margin-bottom:30px;
+    font-size:34px;
+    font-weight:bold;
+}
+
+.card{
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:20px;
+    padding:25px;
+    backdrop-filter: blur(12px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    overflow:hidden;
+    border-radius:14px;
+}
+
+th{
+    background:#1e3a8a;
+    color:white;
+}
+
+th, td{
+    padding:16px;
+    text-align:center;
+}
+
+tr:nth-child(even){
+    background:rgba(255,255,255,0.06);
+}
+
+tr:nth-child(odd){
+    background:rgba(255,255,255,0.02);
+}
+
+.form-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.form-box{
+    width:100%;
+    max-width:500px;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    margin-top:14px;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    outline:none;
+    background:rgba(255,255,255,0.12);
+    color:white;
+}
+
+textarea{
+    min-height:120px;
+    resize:none;
+}
+
+input::placeholder,
+textarea::placeholder{
+    color:#dbeafe;
+}
+
+select option{
+    color:black;
+}
+
+.btn{
+    width:100%;
+    margin-top:18px;
+    padding:14px;
+    border-radius:12px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:#1d4ed8;
+}
+
+.badge{
+    padding:8px 14px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.pending{
+    background:#f59e0b;
+}
+
+.progress{
+    background:#3b82f6;
+}
+
+.completed{
+    background:#10b981;
+}
+
+.actions{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+}
+
+.action-btn{
+    padding:8px 14px;
+    border-radius:10px;
+    color:white;
+    font-size:14px;
+}
+
+.edit-btn{
+    background:#2563eb;
+}
+
+.delete-btn{
+    background:#dc2626;
+}
+
+.home-link{
+    display:inline-block;
+    margin-top:18px;
+    color:#bfdbfe;
+    text-decoration:none;
+}
+
+.empty-state{
+    text-align:center;
+    padding:35px;
+    font-size:18px;
+    color:#dbeafe;
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">Todo Manager</div>
+
+    <div class="nav-links">
+        <a href="/">Dashboard</a>
+        <a href="/add">Add Task</a>
+    </div>
+</nav>
+
+<div class="container">
